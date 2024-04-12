@@ -1,0 +1,39 @@
+﻿@model CustomerSupportViewModel
+<div class="row justify-content-center">
+	<div class="col-xl-8 col-lg-10 col-md-10 col-sm-10">
+		<h2 class="text-lg-start mb-4">Tickets</h2>
+		<table class="table">
+			<thead>
+				<tr class="table-headings">
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col">Created</th>
+					<th scope="col">Due</th>
+				</tr>
+			</thead>
+			<tbody>
+			@foreach(var i in Model.TicketList)
+			{
+				<tr class="@(i.DueDate <= DateTime.Now.AddHours(1) ? "due-soon-or-past" : "") pb-4">
+					<td class="tickets-column" scope="row">@i.Id</td>
+					<td class="tickets-column" >@i.Name</td>
+					
+					<td class="tickets-column description-box">
+						@i.Description
+					</td>
+					
+					<td class="tickets-column date-column">@i.FormattedCreationTime</td>
+					<td class="tickets-column date-column">@i.FormattedDueDate</td>
+					<td class="buttons-column">
+
+					<input type="submit" class="btn btn-lighter-primary btn-width me-2 mb-2" value="Update" onClick="populateForm(@i.Id)" />
+					<input type="submit" class="btn btn-lighter-done btn-width me-2 mb-2" value="Solved" onClick="deleteTicket(@i.Id)" />
+					</td>
+				</tr>
+			
+			}
+			</tbody>
+		</table>
+	</div>
+</div>

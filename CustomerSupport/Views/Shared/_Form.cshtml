@@ -1,0 +1,31 @@
+@model CustomerSupportViewModel
+
+<form asp-action="Insert" id="form-action" class="form-horizontal" method="post" role="form">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 col-md-10 col-sm-10">
+            <h2 class="text-lg-start mb-4">Add Ticket</h2>
+            <input asp-for="Ticket.Id" class="form-control" type="hidden" />
+
+            <label asp-for="Ticket.Name" class="form-label"></label>
+            <input asp-for="Ticket.Name" class="form-control" placeholder="Enter ticket name"/>
+            <span asp-validation-for="Ticket.Name" class="text-danger"></span>
+
+            <label asp-for="Ticket.Description" class="form-label"></label>
+            <textarea asp-for="Ticket.Description" class="form-control" placeholder="Enter ticket description" rows="3"></textarea>
+            <span asp-validation-for="Ticket.Description" class="text-danger"></span>
+
+            <input asp-for="Ticket.CreationTime" class="form-control" type="hidden" />
+
+            <label asp-for="Ticket.DueDate" class="form-label"></label>
+            <input asp-for="Ticket.DueDate" class="form-control" type="datetime-local" />
+            <span asp-validation-for="Ticket.DueDate" class="text-danger"></span>
+
+		</div>
+	</div>
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-10 col-md-10 col-sm-10 mt-3 mb-3">
+            <input type="submit" id="form-button" class="btn btn-lighter-primary" value="Add Ticket">
+		</div>
+	</div>
+</form>
